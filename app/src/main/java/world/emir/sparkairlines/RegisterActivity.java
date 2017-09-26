@@ -73,8 +73,8 @@ public class RegisterActivity  extends AppCompatActivity{
 
     private void startRegister() {
         final String name = mNameField.getText().toString();
-        String email = mEmailField.getText().toString();
-        String password = mPasswordField.getText().toString();
+        final String email = mEmailField.getText().toString();
+        final String password = mPasswordField.getText().toString();
 
         if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)){
 
@@ -90,8 +90,9 @@ public class RegisterActivity  extends AppCompatActivity{
                      DatabaseReference curent_user_db = mDatabase.child(user_id);
 
                      curent_user_db.child("name").setValue(name);
-                     curent_user_db.child("image").setValue("default");
-                     mProgress.dismiss();
+                     curent_user_db.child("email").setValue(email);
+                     curent_user_db.child("password").setValue(password);
+                                    mProgress.dismiss();
 
                      Intent mainIntent = new Intent(RegisterActivity.this,MainActivity.class);
                      mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

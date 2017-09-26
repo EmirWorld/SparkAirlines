@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "9685676729-1rq2vpgr680qolkt670saota50c8gu61.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "world.emir.sparkairlines",
+            "certificate_hash": "cf88db046376f294b12da0e23ef5ac2967449521"
+          }
+        },
+        {
+          "client_id": "9685676729-o6779fegdrkr8ria7uv6sfkre8h2o41s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "world.emir.sparkairlines",
+            "certificate_hash": "0466f9f4f8268274129e23a9d7a1a9be63fa8370"
+          }
+        },
+        {
           "client_id": "9685676729-os2b9jhen9t2h4cotigcrnjpqq0g3r6k.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
