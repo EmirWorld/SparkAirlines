@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "9685676729",
+    "firebase_url": "https://sparkairlines.firebaseio.com",
+    "project_id": "sparkairlines",
+    "storage_bucket": "sparkairlines.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:9685676729:android:5ce2fb085adec9d6",
+        "android_client_info": {
+          "package_name": "world.emir.sparkairlines"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "9685676729-os2b9jhen9t2h4cotigcrnjpqq0g3r6k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "world.emir.sparkairlines",
+            "certificate_hash": "56e824b54b990fc16bcc68e03a552411ef96bff1"
+          }
+        },
+        {
+          "client_id": "9685676729-4bchquq5hc1jf1g4jt80pv7j2djm51s5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCN0M9Fan8CSBPB24GwFm27ztJKpzQ2d5s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "9685676729-4bchquq5hc1jf1g4jt80pv7j2djm51s5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
