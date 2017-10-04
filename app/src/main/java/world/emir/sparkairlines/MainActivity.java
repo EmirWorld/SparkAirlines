@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user == null){
-                    Intent loginIntent = new Intent(MainActivity.this,RegisterActivity.class);
+                    Intent loginIntent = new Intent(MainActivity.this,LoginActivity.class);
                     loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(loginIntent);
 
