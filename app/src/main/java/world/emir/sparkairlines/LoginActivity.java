@@ -1,5 +1,6 @@
 package world.emir.sparkairlines;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -30,7 +31,6 @@ public class LoginActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,12 +44,10 @@ public class LoginActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
 
 
-
-
         mRegToLogBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent RegIntent = new Intent(LoginActivity.this,RegisterActivity.class);
+                Intent RegIntent = new Intent(LoginActivity.this, RegisterActivity.class);
                 RegIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(RegIntent);
 
@@ -65,32 +63,27 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
-
-
-
     }
 
     private void checkLogin() {
         String email = mEmail.getText().toString().trim();
         String password = mPassword.getText().toString().trim();
 
-        if (!TextUtils.isEmpty(email)&& !TextUtils.isEmpty(password)){
+        if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
 
-            mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()){
+                    if (task.isSuccessful()) {
                         checkUserExists();
 
 
-
-                    }else
+                    } else
                         Toast.makeText(LoginActivity.this, "Wrong email or password", Toast.LENGTH_SHORT).show();
                 }
             });
 
-        }else{
-
+        } else {
 
 
         }
@@ -98,18 +91,18 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void checkUserExists() {
-        final String user_id =mAuth.getCurrentUser().getUid();
+        final String user_id = mAuth.getCurrentUser().getUid();
 
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.hasChild(user_id)){
+                if (dataSnapshot.hasChild(user_id)) {
 
-                    Intent mainIntent = new Intent(LoginActivity.this,MainActivity.class);
+                    Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
                     mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(mainIntent);
 
-                }else {
+                } else {
                     Toast.makeText(LoginActivity.this, "You need to setup your account.", Toast.LENGTH_SHORT).show();
                 }
 
@@ -120,7 +113,6 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
-
 
 
     }

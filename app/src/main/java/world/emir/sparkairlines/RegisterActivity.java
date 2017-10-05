@@ -21,7 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
  * Created by world on 9/26/2017.
  */
 
-public class RegisterActivity  extends AppCompatActivity{
+public class RegisterActivity extends AppCompatActivity {
 
     //
     private EditText mNameField;
@@ -38,9 +38,6 @@ public class RegisterActivity  extends AppCompatActivity{
     private DatabaseReference mDatabase;
 
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +47,6 @@ public class RegisterActivity  extends AppCompatActivity{
         mPasswordField = (EditText) findViewById(R.id.password_field);
         mEmailField = (EditText) findViewById(R.id.email_field);
         mRegisterBtn = (Button) findViewById(R.id.registerBtn);
-
 
 
         mAuth = FirebaseAuth.getInstance();
@@ -68,7 +64,6 @@ public class RegisterActivity  extends AppCompatActivity{
         });
 
 
-
     }
 
     private void startRegister() {
@@ -76,30 +71,30 @@ public class RegisterActivity  extends AppCompatActivity{
         final String email = mEmailField.getText().toString();
         final String password = mPasswordField.getText().toString();
 
-        if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)){
+        if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
 
             mProgress.setMessage("Signing Up ...");
             mProgress.show();
 
-            mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                 if (task.isSuccessful()){
+                    if (task.isSuccessful()) {
 
-                     String user_id = mAuth.getCurrentUser().getUid();
-                     DatabaseReference curent_user_db = mDatabase.child(user_id);
+                        String user_id = mAuth.getCurrentUser().getUid();
+                        DatabaseReference curent_user_db = mDatabase.child(user_id);
 
-                     curent_user_db.child("name").setValue(name);
-                     curent_user_db.child("email").setValue(email);
-                     curent_user_db.child("password").setValue(password);
-                                    mProgress.dismiss();
+                        curent_user_db.child("name").setValue(name);
+                        curent_user_db.child("email").setValue(email);
+                        curent_user_db.child("password").setValue(password);
+                        mProgress.dismiss();
 
-                     Intent mainIntent = new Intent(RegisterActivity.this,MainActivity.class);
-                     mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                     startActivity(mainIntent);
+                        Intent mainIntent = new Intent(RegisterActivity.this, MainActivity.class);
+                        mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(mainIntent);
 
 
-                 }
+                    }
                 }
             });
 
