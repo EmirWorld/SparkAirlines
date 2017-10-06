@@ -87,6 +87,8 @@ public class RegisterActivity extends AppCompatActivity {
                         curent_user_db.child("name").setValue(name);
                         curent_user_db.child("email").setValue(email);
                         curent_user_db.child("password").setValue(password);
+                        curent_user_db.child("profile_image").setValue("default");
+                        curent_user_db.child("thumb_image").setValue("default");
                         mProgress.dismiss();
 
                         Intent mainIntent = new Intent(RegisterActivity.this, MainActivity.class);

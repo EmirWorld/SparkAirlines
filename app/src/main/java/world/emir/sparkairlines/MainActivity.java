@@ -18,6 +18,8 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -151,19 +153,42 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
-            // Handle the camera action
-        } else if (id == R.id.nav_future_flights) {
+        if (id == R.id.nav_profile) {
 
-        } else if (id == R.id.nav_past_flights) {
+            Intent i = new Intent(this, ProfileActivity.class);
+            this.startActivity(i);
+            Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show();
+
+
+        } else if (id == R.id.nav_nTrip) {
+
+
+            /**/
+            Toast.makeText(this, "nextTripActivity", Toast.LENGTH_SHORT).show();
+
+
+        } else if (id == R.id.nav_pTrip) {
+
+
+            Toast.makeText(this, "previousTripActivity", Toast.LENGTH_SHORT).show();
 
 
         } else if (id == R.id.nav_contact) {
 
-        } else if (id == R.id.nav_logout) {
+
+            Toast.makeText(this, "ContactActivity", Toast.LENGTH_SHORT).show();
+
+        } else if (id == R.id.nav_logut) {
 
 
-            item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            Toast.makeText(this, "logout", Toast.LENGTH_SHORT).show();
+            logOut();
+
+        }
+
+
+
+        item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                 @Override
                 public boolean onMenuItemClick(MenuItem menuItem) {
 
@@ -175,7 +200,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             });
 
-        }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -250,6 +275,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     /**********************************************************************************/
+
+
 
 
 }

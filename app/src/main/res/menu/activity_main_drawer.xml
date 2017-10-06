@@ -2,35 +2,39 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-    <item android:title="Flights">
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_home"
             android:title="Home" />
         <item
-            android:id="@+id/nav_future_flights"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Future flights" />
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_person"
+            android:title="Profile" />
         <item
-            android:id="@+id/nav_past_flights"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Past flights" />
+            android:id="@+id/nav_nTrip"
+            android:icon="@drawable/ic_nextt"
+            android:title="Next Flights" />
+        <item
+            android:id="@+id/nav_pTrip"
+            android:icon="@drawable/ic_previoust"
+            android:title="Previous Flights" />
 
+        <item android:title="O nama">
+            <menu>
+                <item
+                    android:id="@+id/nav_contact"
+                    android:icon="@drawable/ic_contact"
+                    android:title="Contact" />
+                <item
+                    android:id="@+id/nav_logut"
+                    android:icon="@drawable/ic_exit"
+                    android:title="Log out!" />
+            </menu>
+        </item>
 
     </group>
-</item>
-    <item android:title="Contact">
-        <menu>
-            <item
-                android:id="@+id/nav_contact"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Contact" />
-            <item
-                android:id="@+id/nav_logout"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Log Out" />
-        </menu>
-    </item>
+
+
 
 </menu>
