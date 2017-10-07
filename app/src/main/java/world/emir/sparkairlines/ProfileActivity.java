@@ -1,9 +1,15 @@
 package world.emir.sparkairlines;
 
+import android.annotation.TargetApi;
+import android.app.ActionBar;
+import android.os.Build;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,6 +24,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     TextView user_name;
     TextView user_email;
+    Button editBtn;
 
 
     @Override
@@ -25,10 +32,14 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+
         //Intilaze
         user_email = (TextView) findViewById(R.id.email);
         user_name = (TextView) findViewById(R.id.user_name);
+        editBtn = (Button) findViewById(R.id.edit_btn);
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         //Firebase get Name and Email
 
@@ -47,6 +58,13 @@ public class ProfileActivity extends AppCompatActivity {
 
                 user_name.setText(name);
                 user_email.setText(email);
+
+                /**
+                 * Sets the Action Bar for new Android versions.
+                 */
+
+                android.support.v7.app.ActionBar ab = getSupportActionBar();
+                ab.setTitle(name);
             }
 
             @Override
@@ -55,11 +73,23 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+
         //********
 
+        //********Button to edit ****//
+
+        editBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                ProfileEditFragment profileEditFragment = new ProfileEditFragment();
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.profile_view,profileEditFragment).commit();
 
 
-
+            }
+        });
+        //**************************************************************//
 
 
 

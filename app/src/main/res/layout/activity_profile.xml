@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/profile_view"
     tools:context="world.emir.sparkairlines.ProfileActivity">
 
     <ImageView
@@ -23,28 +24,18 @@
         android:layout_marginEnd="11dp" />
 
 
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_alignTop="@+id/imageView3"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="28dp"
-        app:srcCompat="@mipmap/ic_launcher_round" />
-
     <TextView
         android:id="@+id/user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView5"
-        android:layout_marginTop="14dp"
         android:text="Name and Last"
         android:textStyle="bold"
-        android:textSize="15dp"
+        android:textSize="20dp"
         android:gravity="center"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/imageView2"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:id="@+id/email"
@@ -54,9 +45,17 @@
 
         android:textSize="15dp"
         android:gravity="center"
+        android:layout_marginTop="11dp"
         android:layout_below="@+id/user_name"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="10dp"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/edit_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit"
+        android:layout_below="@+id/imageView2"
         android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
