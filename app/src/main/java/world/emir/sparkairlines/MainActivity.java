@@ -206,16 +206,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 //Log out method
 
-    public void logOut() {
-
-
-        mAuth.signOut();
-        Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
-        loginIntent.addFlags(FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(loginIntent);
-
-
-    }
 
 
     //Method on start MAIN
