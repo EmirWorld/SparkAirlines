@@ -26,11 +26,14 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference mDatabaseUsers;
+
 
 
     @Override
@@ -53,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user == null) {
                     Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
-                    loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    loginIntent.addFlags(FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(loginIntent);
 
 
@@ -180,25 +183,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         } else if (id == R.id.nav_logut) {
 
+           mAuth.getInstance().signOut();
 
-            Toast.makeText(this, "logout", Toast.LENGTH_SHORT).show();
-            logOut();
+
+
+
 
         }
 
 
 
-        item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-                @Override
-                public boolean onMenuItemClick(MenuItem menuItem) {
 
-
-                    logOut();
-
-
-                    return false;
-                }
-            });
 
 
 
@@ -215,6 +210,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         mAuth.signOut();
+        Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
+        loginIntent.addFlags(FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(loginIntent);
+
 
     }
 
