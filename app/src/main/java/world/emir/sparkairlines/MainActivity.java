@@ -1,8 +1,11 @@
 package world.emir.sparkairlines;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentManager;
@@ -15,25 +18,33 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.format.Time;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
+import static android.os.SystemClock.sleep;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference mDatabaseUsers;
-
+    private FloatingActionButton floatingActionButton;
+    private FloatingActionButton floatingActionButtonEdit;
 
 
     @Override
@@ -45,6 +56,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+         floatingActionButton = (FloatingActionButton) findViewById(R.id.admin_fab);
+         floatingActionButtonEdit = (FloatingActionButton) findViewById(R.id.edit_fab);
+
         mAuth = FirebaseAuth.getInstance();
 
 
@@ -104,10 +118,90 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
 
+        /***********Floating button***********/
+
+        //Firebase get Name and Email
+
+        FirebaseUser mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+        String current_uid = mCurrentUser.getUid();
+
+        DatabaseReference mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(current_uid);
+
+        mUserDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                String role = dataSnapshot.child("role").getValue().toString(); //Get role information
+
+                if ( role.equals("member")){
+
+                    Toast.makeText(MainActivity.this,role,Toast.LENGTH_SHORT).show();
+
+                }else{
+                    floatingActionButton.setVisibility(View.VISIBLE);
+                }
+
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+        //********
+
+
+        //Intilaze FAB
+
+
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
+               Toast.makeText(MainActivity.this,"Hello",Toast.LENGTH_SHORT).show();
+                floatingActionButtonEdit.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+        floatingActionButton.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                floatingActionButtonEdit.setVisibility(View.GONE);
+                return false;
+            }
+        });
+
+        floatingActionButtonEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(MainActivity.this,CreateFlights.class);
+                startActivity(i);
+            }
+        });
+
+
     }
 
 
+
+
+
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
 
     //DrawerBackandMethods
 
@@ -264,6 +358,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     /**********************************************************************************/
+
+
+
 
 
 
