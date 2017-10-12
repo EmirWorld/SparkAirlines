@@ -163,9 +163,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onClick(View view) {
 
-
-
-               Toast.makeText(MainActivity.this,"Hello",Toast.LENGTH_SHORT).show();
                 floatingActionButtonEdit.setVisibility(View.VISIBLE);
 
             }
