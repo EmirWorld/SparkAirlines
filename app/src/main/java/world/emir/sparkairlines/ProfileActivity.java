@@ -10,8 +10,15 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -25,6 +32,8 @@ public class ProfileActivity extends AppCompatActivity {
     TextView user_name;
     TextView user_email;
     Button editBtn;
+    ImageView profile_picture;
+    ProgressBar progressBar;
 
 
     @Override
@@ -37,6 +46,11 @@ public class ProfileActivity extends AppCompatActivity {
         user_email = (TextView) findViewById(R.id.email);
         user_name = (TextView) findViewById(R.id.user_name);
         editBtn = (Button) findViewById(R.id.edit_btn);
+        profile_picture = (ImageView) findViewById(R.id.profile_picture);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar2);
+
+
+
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -54,10 +68,30 @@ public class ProfileActivity extends AppCompatActivity {
 
                 String name = dataSnapshot.child("name").getValue().toString(); //Get name from firebase child name
                 String email = dataSnapshot.child("email").getValue().toString(); //Get email from firebase child email
-
+                String profile_pictures = dataSnapshot.child("profile_image").getValue().toString();//Retriving picture link
 
                 user_name.setText(name);
                 user_email.setText(email);
+
+                Log.i("Picture",profile_pictures);
+                Glide.with(ProfileActivity.this)
+                        .load(profile_pictures)
+                        .listener(new RequestListener<String, GlideDrawable>() {
+                            @Override
+                            public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                                return false;
+                            }
+
+                            @Override
+                            public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                                progressBar.setVisibility(View.GONE);
+                                return false;
+                            }
+                        })
+                        .fitCenter()
+                        .into(profile_picture);
+
+                //Glide.with(ProfileActivity.this).load(profile_pictures).into(profile_picture);
 
                 /**
                  * Sets the Action Bar for new Android versions.

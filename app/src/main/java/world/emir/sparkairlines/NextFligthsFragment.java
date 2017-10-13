@@ -34,12 +34,10 @@ import com.google.firebase.database.ValueEventListener;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NextFligthsFragment extends Fragment{
+public class NextFligthsFragment extends Fragment {
 
 
-   ImageButton popup_menu_btn;
-
-
+    ImageButton popup_menu_btn;
 
 
     public NextFligthsFragment() {
@@ -57,85 +55,88 @@ public class NextFligthsFragment extends Fragment{
 
         //Firebase get Name and Email
 
+
         FirebaseUser mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
-        String current_uid = mCurrentUser.getUid();
 
-        DatabaseReference mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(current_uid);
+        if (mCurrentUser != null) {
 
-        mUserDatabase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            String current_uid = mCurrentUser.getUid();
 
-                String role = dataSnapshot.child("role").getValue().toString(); //Get role information
+            DatabaseReference mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(current_uid);
 
-                if ( role.equals("member")){
+            mUserDatabase.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
 
-                    Log.i("Status",role);
+                    String role = dataSnapshot.child("role").getValue().toString(); //Get role information
 
-                }else{
+                    if (role.equals("member")) {
 
-                    popup_menu_btn.setVisibility(View.VISIBLE);
+                        Log.i("Status", role);
 
-                    popup_menu_btn.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
+                    } else {
 
-                            PopupMenu popup = new PopupMenu(getActivity(), popup_menu_btn);
-                            //Inflating the Popup using xml file
-                            popup.getMenuInflater().inflate(R.menu.popupp_menu1, popup.getMenu());
+                        popup_menu_btn.setVisibility(View.VISIBLE);
 
-                            //registering popup with OnMenuItemClickListener
-                            popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                                public boolean onMenuItemClick(MenuItem item) {
+                        popup_menu_btn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
 
-                                    int id = item.getItemId();
-                                    //noinspection SimplifiableIfStatement
-                                    if (id == R.id.add_biljesku) {
+                                PopupMenu popup = new PopupMenu(getActivity(), popup_menu_btn);
+                                //Inflating the Popup using xml file
+                                popup.getMenuInflater().inflate(R.menu.popupp_menu1, popup.getMenu());
 
-                                        Toast.makeText(getActivity(), "Add trip description", Toast.LENGTH_SHORT).show();
-                                        Intent i = new Intent(getActivity(),AddNoteActiviy.class);
-                                        getActivity().startActivity(i);
+                                //registering popup with OnMenuItemClickListener
+                                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                                    public boolean onMenuItemClick(MenuItem item) {
 
-                                        return true;
-                                    }else if (id == R.id.see_biljesku){
+                                        int id = item.getItemId();
+                                        //noinspection SimplifiableIfStatement
+                                        if (id == R.id.add_biljesku) {
 
-                                        Toast.makeText(getActivity(), "See trip description", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getActivity(), "Add trip description", Toast.LENGTH_SHORT).show();
+                                            Intent i = new Intent(getActivity(), AddNoteActiviy.class);
+                                            getActivity().startActivity(i);
+
+                                            return true;
+                                        } else if (id == R.id.see_biljesku) {
+
+                                            Toast.makeText(getActivity(), "See trip description", Toast.LENGTH_SHORT).show();
+                                            return true;
+                                        }
+
+
                                         return true;
                                     }
+                                });
+
+                                popup.show();//showing popup menu
+                            }
+
+                        });
 
 
-                                    return true;
-                                }
-                            });
-
-                            popup.show();//showing popup menu
-                        }
-
-                    });
-
+                    }
 
 
                 }
 
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+        }
 
 
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+            //********
 
 
-        //********
+            return rootView;
 
 
-
-
-        return  rootView;
 
 
     }
-
 }

@@ -7,22 +7,18 @@
     android:id="@+id/profile_view"
     tools:context="world.emir.sparkairlines.ProfileActivity">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_picture"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:src="@drawable/sea_default"
+        app:civ_border_color="#FF000000"
+        app:civ_border_width="2dp"
+        android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        app:srcCompat="@drawable/sea_default" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="60dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/sparklogofull"
-        android:layout_alignBottom="@+id/imageView2"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="11dp" />
-
+        android:layout_marginTop="30dp"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:id="@+id/user_name"
@@ -32,9 +28,9 @@
         android:textStyle="bold"
         android:textSize="20dp"
         android:gravity="center"
-        android:layout_below="@+id/imageView2"
+        android:layout_below="@+id/profile_picture"
+        android:layout_marginTop="37dp"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="20dp"
         android:layout_alignParentEnd="true" />
 
     <TextView
@@ -55,7 +51,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Edit"
-        android:layout_below="@+id/imageView2"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true" />
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_btn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="39dp"
+        android:visibility="visible" />
 
 </RelativeLayout>

@@ -122,34 +122,39 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //Firebase get Name and Email
 
+
+
         FirebaseUser mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
-        String current_uid = mCurrentUser.getUid();
 
-        DatabaseReference mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(current_uid);
+        if (mCurrentUser != null ) {
 
-        mUserDatabase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            String current_uid = mCurrentUser.getUid();
 
-                String role = dataSnapshot.child("role").getValue().toString(); //Get role information
+            DatabaseReference mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(current_uid);
 
-                if ( role.equals("member")){
+            mUserDatabase.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
 
-                    Toast.makeText(MainActivity.this,role,Toast.LENGTH_SHORT).show();
+                    String role = dataSnapshot.child("role").getValue().toString(); //Get role information
 
-                }else{
-                    floatingActionButton.setVisibility(View.VISIBLE);
+                    if (role.equals("member")) {
+
+                        Toast.makeText(MainActivity.this, role, Toast.LENGTH_SHORT).show();
+
+                    } else {
+                        floatingActionButton.setVisibility(View.VISIBLE);
+                    }
+
+
                 }
 
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
 
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
+                }
+            });
+        }
 
 
         //********
