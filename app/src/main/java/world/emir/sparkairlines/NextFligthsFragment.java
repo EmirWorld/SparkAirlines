@@ -78,7 +78,6 @@ public class NextFligthsFragment extends Fragment {
                 viewHolder.setDescription(model.getDescription());
                 viewHolder.setAuthor(model.getAuthor());
                 viewHolder.setThumbImage(getActivity(),model.getThumb_image());
-                viewHolder.setPrices(model.getPrice());
 
 
             }
