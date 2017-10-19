@@ -4,4 +4,8 @@
     </color>
     <color name="colorPrimaryDark">#be3926</color>
     <color name="colorAccent">#781d14</color>
+    <color name="white">#FFFF</color>
+    <color name="btnColor">#781d14</color>
+    <color name="trans">#00000000</color>
+
 </resources>

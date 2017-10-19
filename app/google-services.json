@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "9685676729-1dl8252fbod76c99hevt6liul5jnpvr7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "world.emir.sparkairlines",
+            "certificate_hash": "229bc4b3e66fefbcd457757b8c570f932693e1f8"
+          }
+        },
+        {
           "client_id": "9685676729-1rq2vpgr680qolkt670saota50c8gu61.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

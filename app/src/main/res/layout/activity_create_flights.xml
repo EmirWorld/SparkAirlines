@@ -78,10 +78,12 @@
         android:id="@+id/submit_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="SUBMIT"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/ed_price"
-        android:layout_marginTop="14dp"
-        android:text="SUBMIT" />
+        android:layout_alignParentStart="true"
+        android:backgroundTint="@color/btnColor"
+        android:textColor="@color/white"/>
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -90,6 +92,7 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/submit_btn"
         android:layout_centerHorizontal="true"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        />
 
 </RelativeLayout>

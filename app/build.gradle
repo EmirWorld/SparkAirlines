@@ -28,7 +28,13 @@ dependencies {
     // RecyclerView
     // Glide photo library
 
+    // Single target that includes all FirebaseUI libraries
 
+
+
+
+    compile'com.google.firebase:firebase-storage:10.0.1'
+    compile'com.theartofdev.edmodo:android-image-cropper:2.5.+'
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.google.firebase:firebase-database:10.0.1'
@@ -39,12 +45,10 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:26.0.+'
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'de.hdodenhof:circleimageview:2.2.0'
-    // Single target that includes all FirebaseUI libraries
     compile 'com.firebaseui:firebase-ui:0.4.4'
-
-
     testCompile 'junit:junit:4.12'
 }
+
 
 
 

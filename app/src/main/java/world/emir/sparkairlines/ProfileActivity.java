@@ -2,7 +2,9 @@ package world.emir.sparkairlines;
 
 import android.annotation.TargetApi;
 import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Build;
+import android.provider.ContactsContract;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,6 +29,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
+
 public class ProfileActivity extends AppCompatActivity {
 
     TextView user_name;
@@ -47,7 +51,7 @@ public class ProfileActivity extends AppCompatActivity {
         user_name = (TextView) findViewById(R.id.user_name);
         editBtn = (Button) findViewById(R.id.edit_btn);
         profile_picture = (ImageView) findViewById(R.id.profile_picture);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar2);
+
 
 
 
@@ -68,7 +72,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                 String name = dataSnapshot.child("name").getValue().toString(); //Get name from firebase child name
                 String email = dataSnapshot.child("email").getValue().toString(); //Get email from firebase child email
-                String profile_pictures = dataSnapshot.child("profile_image").getValue().toString();//Retriving picture link
+                String profile_pictures = dataSnapshot.child("image").getValue().toString();//Retriving picture link
 
                 user_name.setText(name);
                 user_email.setText(email);
@@ -84,7 +88,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                             @Override
                             public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
-                                progressBar.setVisibility(View.GONE);
+
                                 return false;
                             }
                         })
@@ -116,12 +120,13 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                ProfileEditFragment profileEditFragment = new ProfileEditFragment();
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.profile_view,profileEditFragment).commit();
+                Intent setupProfileIntent = new Intent(ProfileActivity.this, SetupProfileActivity.class);
+                setupProfileIntent.addFlags(FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(setupProfileIntent);
 
 
             }
+
         });
         //**************************************************************//
 
