@@ -132,8 +132,10 @@ public class NextFligthsFragment extends Fragment {
                                                 if (id == R.id.add_biljesku) {
 
                                                     Toast.makeText(getActivity(), "Add trip description", Toast.LENGTH_SHORT).show();
-                                                    Intent i = new Intent(getActivity(), AddNoteActiviy.class);
-                                                    getActivity().startActivity(i);
+                                                    Intent intent = new Intent(getActivity(), AddNoteActiviy.class);
+                                                    intent.putExtra("FLIGTH_KEY", flight_key);
+                                                    startActivity(intent);
+
 
                                                     return true;
                                                 } else if (id == R.id.see_biljesku) {

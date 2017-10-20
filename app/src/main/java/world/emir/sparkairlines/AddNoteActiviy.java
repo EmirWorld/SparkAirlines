@@ -35,6 +35,9 @@ public class AddNoteActiviy extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Flights");
 
+
+
+
         add_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,9 +45,16 @@ public class AddNoteActiviy extends AppCompatActivity {
 
             }
         });
+
+
     }
 
+
+
     private void create_note() {
+
+
+
 
 
 
@@ -52,7 +62,7 @@ public class AddNoteActiviy extends AppCompatActivity {
 
 
 
-       /* final String note_name = name_of_note.getText().toString();
+      final String note_name = name_of_note.getText().toString();
         final String note_body = note.getText().toString();
 
 
@@ -60,9 +70,8 @@ public class AddNoteActiviy extends AppCompatActivity {
         if (!TextUtils.isEmpty(note_name) && !TextUtils.isEmpty(note_body)) {
 
 
-
-            String flight_id = UUID.randomUUID().toString();
-            DatabaseReference current_flights_db = mDatabase.child(flight_id);
+            String value = getIntent().getExtras().getString("FLIGTH_KEY");
+            DatabaseReference current_flights_db = mDatabase.child(value);
 
             current_flights_db.child("note_name").setValue(note_name);
             current_flights_db.child("note").setValue(note_body);
@@ -80,7 +89,7 @@ public class AddNoteActiviy extends AppCompatActivity {
         }else {
             Toast.makeText(AddNoteActiviy.this,"Check inputs",Toast.LENGTH_SHORT).show();
         }
-*/
+
     }
 
 
