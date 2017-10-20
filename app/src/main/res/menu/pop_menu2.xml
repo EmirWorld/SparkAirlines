@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/add_biljesku"
+        android:title="Add trip desription"/>
+
+    <item
+        android:id="@+id/see_biljesku"
+        android:title="See trip desctiption"/>
+
+    <item
+        android:id="@+id/delete_flight"
+        android:icon="@color/authui_colorAccent"
+        android:title="Delete flight"/>
+
+
+
+
+
+</menu>
