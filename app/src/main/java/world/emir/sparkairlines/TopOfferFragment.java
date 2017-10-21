@@ -77,6 +77,7 @@ public class TopOfferFragment extends Fragment {
 
 
 
+                viewHolder.setTime(model.getTime());
 
                 viewHolder.setPrice(model.getPrice());
                 viewHolder.setDate(model.getDate());

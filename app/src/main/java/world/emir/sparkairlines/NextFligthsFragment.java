@@ -88,7 +88,10 @@ public class NextFligthsFragment extends Fragment {
 
 
 
+                viewHolder.setTime(model.getTime());
 
+                viewHolder.setPrice(model.getPrice());
+                viewHolder.setDate(model.getDate());
                 viewHolder.setFirstDestination(model.getFirst_destination());
                 viewHolder.setSecondDestination(model.getSecond_destination());
                 viewHolder.setAuthor(model.getAuthor());
