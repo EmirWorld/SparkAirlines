@@ -11,14 +11,6 @@
             android:id="@+id/nav_profile"
             android:icon="@drawable/ic_person"
             android:title="Profile" />
-        <item
-            android:id="@+id/nav_nTrip"
-            android:icon="@drawable/ic_nextt"
-            android:title="Next Flights" />
-        <item
-            android:id="@+id/nav_pTrip"
-            android:icon="@drawable/ic_previoust"
-            android:title="Previous Flights" />
 
         <item android:title="O nama">
             <menu>

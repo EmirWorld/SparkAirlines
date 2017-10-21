@@ -37,7 +37,7 @@
         <activity android:name=".CreateFlights" />
         <activity android:name=".AddNoteActiviy" />
         <activity android:name=".SeeNotesActivity" />
-        <activity android:name=".SetupProfileActivity"></activity>
+        <activity android:name=".SetupProfileActivity" />
     </application>
 
 </manifest>

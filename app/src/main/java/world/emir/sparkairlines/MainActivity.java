@@ -259,14 +259,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show();
 
 
-        } else if (id == R.id.nav_nTrip) {
-
-
-            /**/
-            Toast.makeText(this, "nextTripActivity", Toast.LENGTH_SHORT).show();
-
-
-        } else if (id == R.id.nav_pTrip) {
 
 
             Toast.makeText(this, "previousTripActivity", Toast.LENGTH_SHORT).show();

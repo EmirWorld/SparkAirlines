@@ -22,7 +22,7 @@
 
     <!-- Strings related to fragments -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="next_flights">NEXT FLIGHTS</string>
-    <string name="best_offer">BEST DEALS</string>
+    <string name="next_flights">FUTURE FLIGHTS</string>
+    <string name="best_offer">PAST FLIGHTS</string>
     <string name="profile">Profile</string>
 </resources>

@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -29,6 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText mEmailField;
 
     private Button mRegisterBtn;
+    private Button mLoginBtn;
 
 
     private FirebaseAuth mAuth;
@@ -47,11 +49,23 @@ public class RegisterActivity extends AppCompatActivity {
         mPasswordField = (EditText) findViewById(R.id.password_field);
         mEmailField = (EditText) findViewById(R.id.email_field);
         mRegisterBtn = (Button) findViewById(R.id.registerBtn);
+        mLoginBtn = (Button) findViewById(R.id.button_login);
 
 
         mAuth = FirebaseAuth.getInstance();
         mProgress = new ProgressDialog(this);
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
+
+
+
+        mLoginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent RegIntent = new Intent(RegisterActivity.this, LoginActivity.class);
+                RegIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(RegIntent);
+            }
+        });
 
 
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +84,10 @@ public class RegisterActivity extends AppCompatActivity {
         final String name = mNameField.getText().toString();
         final String email = mEmailField.getText().toString();
         final String password = mPasswordField.getText().toString();
+        if (!validate()) {
+            onSignupFailed();
+            return;
+        }
 
         if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
 
@@ -103,5 +121,59 @@ public class RegisterActivity extends AppCompatActivity {
 
         }
 
+
+
+
+
+
+
+
     }
-}
+
+    private void onSignupFailed() {
+        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+
+
+
+
+    }
+
+    public boolean validate(){
+
+        boolean valid = true;
+        String name = mNameField.getText().toString();
+        String email = mEmailField.getText().toString();
+        String password = mPasswordField.getText().toString();
+
+
+
+        if (name.isEmpty() || name.length()<3){
+            mNameField.setError("at least 3 characters");
+            valid=false;
+        }else {
+            mNameField.setError(null);
+        }
+
+
+            if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                mEmailField.setError("enter a valid email address");
+                valid = false;
+            }else {
+                mEmailField.setError(null);
+
+            }
+
+
+            if (password.isEmpty() || password.length()<6 || password.length() >10 ){
+                mPasswordField.setError("between 4 and 10 alphanumeric characters");
+                valid = false;
+            }else {
+                mPasswordField.setError(null);
+            }
+return valid;
+
+        }
+
+    }
+
+
