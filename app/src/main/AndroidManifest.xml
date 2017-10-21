@@ -38,6 +38,7 @@
         <activity android:name=".AddNoteActiviy" />
         <activity android:name=".SeeNotesActivity" />
         <activity android:name=".SetupProfileActivity" />
+        <activity android:name=".UpdateNoteActivity"></activity>
     </application>
 
 </manifest>

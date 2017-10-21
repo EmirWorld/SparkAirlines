@@ -131,7 +131,7 @@ public class NextFligthsFragment extends Fragment {
                                                 //noinspection SimplifiableIfStatement
                                                 if (id == R.id.add_biljesku) {
 
-                                                    Toast.makeText(getActivity(), "Add trip description", Toast.LENGTH_SHORT).show();
+
                                                     Intent intent = new Intent(getActivity(), AddNoteActiviy.class);
                                                     intent.putExtra("FLIGTH_KEY", flight_key);
                                                     startActivity(intent);
@@ -140,8 +140,14 @@ public class NextFligthsFragment extends Fragment {
                                                     return true;
                                                 } else if (id == R.id.see_biljesku) {
 
-                                                    Toast.makeText(getActivity(), "See trip description", Toast.LENGTH_SHORT).show();
-                                                    return true;
+
+
+                                                    Intent intent = new Intent(getActivity(), SeeNotesActivity.class);
+                                                    intent.putExtra("KEY", flight_key);
+                                                    startActivity(intent);
+
+
+
                                                 }else if (id == R.id.delete_flight) {
 
                                                     //Create Database ref
