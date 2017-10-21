@@ -6,20 +6,54 @@ package world.emir.sparkairlines;
 
 public class Flights {
 
-    String author,date,date_of_flight_created,description,name_of_destination,price,thumb_image,time;
+    String first_destination,second_destination,price,date,time,author;
 
-    Flights(){
-
+    public Flights(String first_destination, String second_destination, String price, String date, String time, String author) {
+        this.first_destination = first_destination;
+        this.second_destination = second_destination;
+        this.price = price;
+        this.date = date;
+        this.time = time;
+        this.author = author;
     }
 
-    public Flights(String author, String date, String date_of_flight_created, String description, String name_of_destination, String price, String thumb_image, String time) {
-        this.author = author;
-        this.date = date;
-        this.date_of_flight_created = date_of_flight_created;
-        this.description = description;
-        this.name_of_destination = name_of_destination;
+    public String getFirst_destination() {
+        return first_destination;
+    }
+
+    public void setFirst_destination(String first_destination) {
+        this.first_destination = first_destination;
+    }
+
+    public String getSecond_destination() {
+        return second_destination;
+    }
+
+    public void setSecond_destination(String second_destination) {
+        this.second_destination = second_destination;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
         this.price = price;
-        this.thumb_image = thumb_image;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
         this.time = time;
     }
 
@@ -31,59 +65,11 @@ public class Flights {
         this.author = author;
     }
 
-    public String getDate() {
-        return date;
+    Flights(){
+
+
+
     }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
 
-    public String getDate_of_flight_created() {
-        return date_of_flight_created;
-    }
-
-    public void setDate_of_flight_created(String date_of_flight_created) {
-        this.date_of_flight_created = date_of_flight_created;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getName_of_destination() {
-        return name_of_destination;
-    }
-
-    public void setName_of_destination(String name_of_destination) {
-        this.name_of_destination = name_of_destination;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
-    public String getThumb_image() {
-        return thumb_image;
-    }
-
-    public void setThumb_image(String thumb_image) {
-        this.thumb_image = thumb_image;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
 }

@@ -124,21 +124,28 @@ public class FlightViewHolder extends RecyclerView.ViewHolder{
 
     }
 
-    public void  setTitle(String Title){
+    public void  setFirstDestination(String firstDestination){
 
-        TextView title = (TextView) mView.findViewById(R.id.title);
-        title.setText(Title);
+        TextView sFirstDestination = (TextView) mView.findViewById(R.id.first_destination_txt);
+        sFirstDestination.setText(firstDestination);
 
 
 
     }
+    public void setSecondDestination(String secondDestination) {
 
-
-    public void  setDescription (String description){
-
-        TextView description_flight = mView.findViewById(R.id.description);
-        description_flight.setText(description);
+        TextView sSecondDestination = (TextView) mView.findViewById(R.id.second_destination_txt);
+        sSecondDestination.setText(secondDestination);
     }
+
+    public void setDate (String date){
+        TextView sDate = (TextView) mView.findViewById(R.id.date);
+        sDate.setText(date);
+    }
+
+
+
+
 
     public void setAuthor (String author){
 
@@ -147,17 +154,16 @@ public class FlightViewHolder extends RecyclerView.ViewHolder{
     }
 
 
-    public void setThumbImage (Context ctx,String thumbImage){
-
-        ImageView thumbimage = (ImageView) mView.findViewById(R.id.thumbnail);
-
-        Glide.with(ctx)
-                .load(thumbImage)
-                .fitCenter()
-                .placeholder(R.drawable.sea_default)
-                .into(thumbimage);
-
+    public void setPrice (String price){
+        TextView sPrice = mView.findViewById(R.id.price_of_flight);
+        sPrice.setText(price);
     }
+
+    public void setTime (String time){
+        TextView sTime = mView.findViewById(R.id.time);
+        sTime.setText(time);
+    }
+
 
 
 

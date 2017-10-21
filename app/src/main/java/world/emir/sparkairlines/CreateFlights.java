@@ -29,11 +29,12 @@ import static android.os.SystemClock.sleep;
 
 public class CreateFlights extends AppCompatActivity {
 
-    private EditText name_of_location;
-    private EditText description_of_location;
+    private EditText name_of_first_destination;
+    private EditText name_of_second_destination;
+
     private EditText time_of_flight;
     private EditText date_of_flight;
-    private EditText link_of_thumbnail_picture;
+
     private EditText flight_price;
     private Button btn_submit;
 
@@ -45,11 +46,12 @@ public class CreateFlights extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_flights);
 
-        name_of_location = (EditText) findViewById(R.id.name_of_destionation);
-        description_of_location = (EditText) findViewById(R.id.ed_description);
+        name_of_first_destination = (EditText) findViewById(R.id.name_of_first_destination) ;
+        name_of_second_destination = (EditText) findViewById(R.id.name_of_second_destination);
+
         time_of_flight = (EditText) findViewById(R.id.ed_time);
         date_of_flight = (EditText) findViewById(R.id.ed_date);
-        link_of_thumbnail_picture = (EditText) findViewById(R.id.ed_thumbnail);
+
         flight_price = (EditText) findViewById(R.id.ed_price);
         btn_submit = (Button) findViewById(R.id.submit_btn);
 
@@ -66,18 +68,19 @@ public class CreateFlights extends AppCompatActivity {
     }
 
     private void create_flights() {
-        final String name = name_of_location.getText().toString();
-        final String description = description_of_location.getText().toString();
+        final String name2 = name_of_first_destination.getText().toString();
+        final String name1 = name_of_second_destination.getText().toString();
+
         final String time = time_of_flight.getText().toString();
         final String date = date_of_flight.getText().toString();
-        final String picture = link_of_thumbnail_picture.getText().toString();
+
         final String price = flight_price.getText().toString();
 
 
 
-        if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(description)
+        if (!TextUtils.isEmpty(name1) && !TextUtils.isEmpty(name2)
                 && !TextUtils.isEmpty(time) && !TextUtils.isEmpty(date)
-                && !TextUtils.isEmpty(picture) && !TextUtils.isEmpty(price)) {
+                 && !TextUtils.isEmpty(price)) {
 
 
             String time_published = getDateTime().toString();
@@ -86,16 +89,16 @@ public class CreateFlights extends AppCompatActivity {
             String flight_id = UUID.randomUUID().toString();
             DatabaseReference current_flights_db = mDatabase.child(flight_id);
 
-            current_flights_db.child("name_of_destination").setValue(name);
-            current_flights_db.child("description").setValue(description);
+            current_flights_db.child("first_destination").setValue(name1);
+            current_flights_db.child("second_destination").setValue(name2);
             current_flights_db.child("time").setValue(time);
             current_flights_db.child("date").setValue(date);
             current_flights_db.child("price").setValue(price+"$");
-            current_flights_db.child("thumb_image").setValue(picture);
+
             current_flights_db.child("date_of_fligh_created").setValue(time_published);
             current_flights_db.child("author").setValue("Admin");
 
-            String succesMessage = "New flight for "+name+" whit price of "+price+" $ ,is succesufly created in "+time_published;
+            String succesMessage = "New flight for "+name1+" - " + name2 +" whit price of "+price+" $ ,is succesufly created in "+time_published;
 
             Toast.makeText(this,succesMessage,Toast.LENGTH_LONG).show();
 

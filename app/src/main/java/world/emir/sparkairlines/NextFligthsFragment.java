@@ -88,10 +88,11 @@ public class NextFligthsFragment extends Fragment {
 
 
 
-                viewHolder.setTitle(model.getName_of_destination());
-                viewHolder.setDescription(model.getDescription());
+
+                viewHolder.setFirstDestination(model.getFirst_destination());
+                viewHolder.setSecondDestination(model.getSecond_destination());
                 viewHolder.setAuthor(model.getAuthor());
-                viewHolder.setThumbImage(getActivity(),model.getThumb_image());
+
 
 
                 FirebaseUser mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
