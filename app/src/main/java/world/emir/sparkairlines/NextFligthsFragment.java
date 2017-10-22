@@ -38,6 +38,8 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.Map;
 
+import static world.emir.sparkairlines.TopOfferFragment.getCurrentTimeStamp;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -100,7 +102,7 @@ public class NextFligthsFragment extends Fragment {
                 Flights.class,
                 R.layout.new_flights_single_row,
                 FlightViewHolder.class,
-                mDatabase
+                mDatabase.orderByChild("date").startAt(getCurrentTimeStamp()).endAt("2020-01-01")
         ) {
             @Override
             protected void populateViewHolder(final FlightViewHolder viewHolder, Flights model, int position) {
@@ -146,6 +148,8 @@ public class NextFligthsFragment extends Fragment {
 
 
                                       if (dataSnapshot.child(flight_key).hasChild(mCurrentUser.getUid())) {
+
+                                          viewHolder.booking_btn.setText("BOOK NOW");
 
 
                                           mDatabaseBookings.child(flight_key).child(mCurrentUser.getUid()).removeValue();

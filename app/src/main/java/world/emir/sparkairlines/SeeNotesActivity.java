@@ -76,7 +76,7 @@ public class SeeNotesActivity extends AppCompatActivity {
            }
            else{
 
-               Toast.makeText(SeeNotesActivity.this, "No note found", Toast.LENGTH_SHORT).show();
+               Toast.makeText(SeeNotesActivity.this, "No note found!", Toast.LENGTH_SHORT).show();
                finish();
 
            }
@@ -107,10 +107,9 @@ public class SeeNotesActivity extends AppCompatActivity {
 
                         final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("Flights/"+value);
 
-                        DatabaseReference current_flights_db = mDatabase.child(value);
 
-                        current_flights_db.child("note_name").removeValue();
-                        current_flights_db.child("note").removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        mDatabase.child("note_name").removeValue();
+                        mDatabase.child("note").removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
 

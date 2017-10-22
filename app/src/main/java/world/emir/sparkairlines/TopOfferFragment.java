@@ -30,6 +30,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -62,13 +65,17 @@ public class TopOfferFragment extends Fragment {
 
         //Firebase
 
+
+
         final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("Flights");
+
 
         FirebaseRecyclerAdapter<Flights,FlightViewHolder> adapter = new FirebaseRecyclerAdapter<Flights, FlightViewHolder>(
                 Flights.class,
                 R.layout.new_flights_single_row,
                 FlightViewHolder.class,
-                mDatabase
+                mDatabase.orderByChild("date").startAt("2017-01-01").endAt(getCurrentTimeStamp())
+
         ) {
             @Override
             protected void populateViewHolder(final FlightViewHolder viewHolder, Flights model, int position) {
@@ -229,6 +236,20 @@ public class TopOfferFragment extends Fragment {
 
         return rootView;
 
+    }
+
+    public static String getCurrentTimeStamp(){
+        try {
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String currentDateTime = dateFormat.format(new Date()); // Find todays date
+
+            return currentDateTime;
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            return null;
+        }
     }
 
 
