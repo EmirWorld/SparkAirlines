@@ -30,6 +30,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
 
@@ -82,30 +83,9 @@ public class ProfileActivity extends AppCompatActivity {
 
                 user_name.setText(name);
                 user_email.setText(email);
-                profile_picture.setImageURI(Uri.parse(profile_pictures));
 
+                Picasso.with(getApplicationContext()).load(profile_pictures).into(profile_picture);
 
-
-//                Log.i("Picture",profile_pictures);
-//                Glide.with(ProfileActivity.this)
-//                        .load(profile_pictures)
-//                        .listener(new RequestListener<String, GlideDrawable>() {
-//                            @Override
-//                            public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
-//                                return false;
-//                            }
-//
-//                            @Override
-//                            public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
-//
-//                                return false;
-//                            }
-//                        })
-//                        .placeholder(R.drawable.sea_default)
-//                        .fitCenter()
-//                        .into(profile_picture);
-
-                //Glide.with(ProfileActivity.this).load(profile_pictures).into(profile_picture);
 
                 /**
                  * Sets the Action Bar for new Android versions.

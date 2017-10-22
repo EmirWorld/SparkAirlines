@@ -16,7 +16,7 @@
     <!--Strings related to activity_create_flights-->
     <string name="first_destination">Name of first destination</string>
     <string name="second_destination">Name of second destination</string>
-    <string name="date">Date</string>
+    <string name="date">Date / yyyy-MM-dd !</string>
     <string name="time">Time</string>
     <string name="price">Price</string>
 

@@ -122,6 +122,7 @@ public class NextFligthsFragment extends Fragment {
 
 
                 final FirebaseUser mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+                final String current_uid = mCurrentUser.getUid();
 
 
 
@@ -133,7 +134,7 @@ public class NextFligthsFragment extends Fragment {
                   public void onClick(View view) {
 
                       //Booking database refrence
-                      final DatabaseReference mDatabaseBookings = FirebaseDatabase.getInstance().getReference().child("Bookings");
+                      final DatabaseReference mDatabaseBookings = FirebaseDatabase.getInstance().getReference().child("Users").child(current_uid).child("Booking");
                       mDatabaseBookings.keepSynced(true);
                       AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                       builder.setTitle("Book this flights?");
@@ -234,9 +235,9 @@ public class NextFligthsFragment extends Fragment {
 
                 if (mCurrentUser != null ) {
 
-                    String current_uid = mCurrentUser.getUid();
+                    String fcurrent_uid = mCurrentUser.getUid();
 
-                    DatabaseReference mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(current_uid);
+                    DatabaseReference mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(fcurrent_uid);
 
                     mUserDatabase.addValueEventListener(new ValueEventListener() {
                         @Override

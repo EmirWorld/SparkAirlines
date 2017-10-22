@@ -26,6 +26,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,6 +37,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
 import static android.os.SystemClock.sleep;
@@ -49,11 +52,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -62,7 +67,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
          floatingActionButtonEdit = (FloatingActionButton) findViewById(R.id.edit_fab);
 
 
+
         mAuth = FirebaseAuth.getInstance();
+
 
 
 
@@ -87,6 +94,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         mDatabaseUsers = FirebaseDatabase.getInstance().getReference().child("Users");
         mDatabaseUsers.keepSynced(true);
+
+
+
+
 
 
 //        //Floationg button
@@ -131,23 +142,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         FirebaseUser mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
 
+
         if (mCurrentUser != null ) {
 
             String current_uid = mCurrentUser.getUid();
 
             DatabaseReference mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(current_uid);
 
+
             mUserDatabase.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
 
-                    String role = dataSnapshot.child("role").getValue().toString(); //Get role information
+
+
+                    String role = dataSnapshot.child("role").getValue().toString();
+                    //Get role information
+
 
                     if (role.equals("member")) {
+
 
                         Toast.makeText(MainActivity.this, role, Toast.LENGTH_SHORT).show();
 
                     } else {
+
                         floatingActionButton.setVisibility(View.VISIBLE);
                     }
 
@@ -160,6 +179,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             });
         }
+
 
 
         //********
@@ -294,6 +314,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
