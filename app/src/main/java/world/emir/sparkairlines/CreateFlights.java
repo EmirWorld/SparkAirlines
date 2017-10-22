@@ -1,5 +1,8 @@
 package world.emir.sparkairlines;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -9,6 +12,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -23,6 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
 
@@ -30,11 +35,15 @@ import static android.os.SystemClock.sleep;
 
 public class CreateFlights extends AppCompatActivity {
 
+
+
+
     private EditText name_of_first_destination;
     private EditText name_of_second_destination;
 
+
     private EditText time_of_flight;
-    private EditText date_of_flight;
+    public EditText date_of_flight;
 
     private EditText flight_price;
     private Button btn_submit;
@@ -58,6 +67,19 @@ public class CreateFlights extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Flights");
+        date_of_flight.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                if(hasFocus){
+                    DateDialog dialog =new DateDialog(view);
+                    FragmentTransaction ft = getFragmentManager().beginTransaction();
+                    dialog.show(ft,"DatePicker");
+                }
+
+
+
+            }
+        });
 
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,15 +93,15 @@ public class CreateFlights extends AppCompatActivity {
     private void create_flights() {
         final String name2 = name_of_first_destination.getText().toString();
         final String name1 = name_of_second_destination.getText().toString();
-
+         final String date = date_of_flight.getText().toString();
         final String time = time_of_flight.getText().toString();
-        final String date = date_of_flight.getText().toString();
+
 
         final String price = flight_price.getText().toString();
 
 
         if (!TextUtils.isEmpty(name1) && !TextUtils.isEmpty(name2)
-                && !TextUtils.isEmpty(time) && !TextUtils.isEmpty(date)
+                && !TextUtils.isEmpty(time)&&!TextUtils.isEmpty(date)
                 && !TextUtils.isEmpty(price)) {
 
 
@@ -120,6 +142,8 @@ public class CreateFlights extends AppCompatActivity {
         Date date = new Date();
         return dateFormat.format(date);
     }
+
+
 
 
 
