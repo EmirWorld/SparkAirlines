@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,41 +12,45 @@
     android:layout_height="match_parent"
     tools:context="world.emir.sparkairlines.AddNoteActiviy">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/note"
+        android:id="@+id/imageView3"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
     <EditText
         android:id="@+id/ed_note_name"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="31dp"
         android:ems="10"
         android:hint="Note name"
         android:inputType="textPersonName"
         app:layout_constraintLeft_toLeftOf="parent"
-        tools:layout_editor_absoluteY="29dp" />
+        tools:layout_editor_absoluteY="29dp"
+        android:layout_below="@+id/imageView3"
+        android:layout_toEndOf="@+id/progresBar_add" />
 
     <EditText
         android:id="@+id/ed_note"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignStart="@+id/ed_note_name"
-        android:layout_below="@+id/ed_note_name"
-        android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="Add not here!"
-        android:inputType="textMultiLine" />
+        android:inputType="textMultiLine"
+        android:layout_below="@+id/ed_note_name"
+        android:layout_toEndOf="@+id/progresBar_add" />
 
     <Button
         android:id="@+id/add_button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/ed_note"
-        android:layout_marginTop="12dp"
-        android:text="Submit" />
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/progresBar_add"
+        android:background="@drawable/buttonstyle"
+        android:text="Submit"
+        android:textColor="@color/color2" />
 
     <ProgressBar
         android:id="@+id/progresBar_add"
@@ -48,8 +58,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/add_button"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="19dp"
-        android:visibility="gone" />
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>
+</ScrollView>

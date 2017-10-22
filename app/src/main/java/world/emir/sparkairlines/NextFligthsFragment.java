@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -43,10 +44,13 @@ import java.util.Map;
 public class NextFligthsFragment extends Fragment {
 
 
+
+
     ImageButton popup_menu_btn;
     RecyclerView recyclerView;
     //DatabaseReference mDatabase;
     ProgressDialog progressDialog;
+
 
 
     public NextFligthsFragment() {
@@ -63,9 +67,24 @@ public class NextFligthsFragment extends Fragment {
 
         //Intilaze recycler view
 
+
         recyclerView = (RecyclerView) rootView.findViewById(R.id.next_flights_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         //Intilaze popmenu image
 
@@ -100,6 +119,15 @@ public class NextFligthsFragment extends Fragment {
 
                 FirebaseUser mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
 
+
+
+
+
+
+
+
+
+
                 if (mCurrentUser != null ) {
 
                     String current_uid = mCurrentUser.getUid();
@@ -115,7 +143,14 @@ public class NextFligthsFragment extends Fragment {
                             if (role.equals("member")) {
 
 
+
                             } else {
+
+
+
+
+
+
 
                                 viewHolder.mView.setOnClickListener(new View.OnClickListener() {
                                     @Override
@@ -217,6 +252,8 @@ public class NextFligthsFragment extends Fragment {
 
 
 
+
+
                             }
 
 
@@ -228,6 +265,10 @@ public class NextFligthsFragment extends Fragment {
                         }
                     });
                 }
+
+
+
+
 
 
 

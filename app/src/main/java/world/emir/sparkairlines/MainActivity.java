@@ -24,6 +24,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private FloatingActionButton floatingActionButtonEdit;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +61,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
          floatingActionButton = (FloatingActionButton) findViewById(R.id.admin_fab);
          floatingActionButtonEdit = (FloatingActionButton) findViewById(R.id.edit_fab);
 
+
         mAuth = FirebaseAuth.getInstance();
+
+
 
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -256,18 +261,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             Intent i = new Intent(this, ProfileActivity.class);
             this.startActivity(i);
-            Toast.makeText(this, "Profile", Toast.LENGTH_SHORT).show();
 
 
 
 
-            Toast.makeText(this, "previousTripActivity", Toast.LENGTH_SHORT).show();
+
+
 
 
         } else if (id == R.id.nav_contact) {
+            Intent i = new Intent(this, Contact.class);
+            this.startActivity(i);
 
 
-            Toast.makeText(this, "ContactActivity", Toast.LENGTH_SHORT).show();
+
+
 
         } else if (id == R.id.nav_logut) {
 

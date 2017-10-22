@@ -74,10 +74,11 @@
             android:id="@+id/sadasd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/prc"
-            android:layout_alignTop="@+id/booking_btn"
+
             android:text="Date : "
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            android:layout_below="@+id/prc"
+            android:layout_alignStart="@+id/prc" />
 
         <TextView
             android:id="@+id/date"
