@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -19,9 +19,9 @@
         android:src="@drawable/paperplane"
         android:id="@+id/imageView2"
 
-        android:layout_above="@+id/name_of_first_destination"
+        android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="15dp" />
+        android:layout_marginTop="19dp" />
 
     <EditText
         android:id="@+id/name_of_second_destination"
@@ -53,10 +53,10 @@
         android:layout_above="@+id/submit_btn"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="27dp"
-
         android:ems="10"
-        android:hint="@string/date"
+        android:hint="@string/date_hint"
         android:inputType="date" />
+
 
     <EditText
         android:id="@+id/ed_time"
@@ -89,10 +89,10 @@
         android:background="@drawable/buttonstyle"
         android:text="@string/submit"
         android:textColor="@color/color2"
-        android:layout_marginBottom="35dp"
+        android:layout_marginBottom="30dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true" />
 
 
 </RelativeLayout>
-    </ScrollView>
+    </RelativeLayout>

@@ -206,15 +206,53 @@ public class NextFligthsFragment extends Fragment {
 
                             if (role.equals("member")) {
 
+                                viewHolder.pop_menu_btn.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+
+
+                                        PopupMenu popup = new PopupMenu(getActivity(), viewHolder.mView);
+                                        //Inflating the Popup using xml file
+                                        popup.getMenuInflater().inflate(R.menu.popmenu3, popup.getMenu());
+
+
+                                        //registering popup with OnMenuItemClickListener
+                                        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                                            public boolean onMenuItemClick(MenuItem item) {
+
+                                                int id = item.getItemId();
+                                                //noinspection SimplifiableIfStatement
+
+                                                if (id == R.id.see_biljesku) {
+
+
+                                                    Intent intent = new Intent(getActivity(), SeeNotesActivity.class);
+                                                    intent.putExtra("KEY", flight_key);
+                                                    startActivity(intent);
+
+
+                                                }
+
+                                                return true;
+                                            }
+
+                                        });
+
+                                        popup.setGravity(Gravity.RIGHT);
+
+                                        popup.show();//showing popup menu
+
+
+
+
+
+                                    }
+                                });
+
+
 
 
                             } else {
-
-
-
-
-
-
 
                                 viewHolder.mView.setOnClickListener(new View.OnClickListener() {
                                     @Override

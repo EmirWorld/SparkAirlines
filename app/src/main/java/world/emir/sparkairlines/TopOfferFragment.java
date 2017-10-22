@@ -110,8 +110,12 @@ public class TopOfferFragment extends Fragment {
 
                             if (role.equals("member")) {
 
+                                viewHolder.pop_menu_btn.setVisibility(View.GONE);
+
 
                             } else {
+
+                                viewHolder.pop_menu_btn.setVisibility(View.GONE);
 
                                 viewHolder.mView.setOnClickListener(new View.OnClickListener() {
                                     @Override
@@ -129,20 +133,8 @@ public class TopOfferFragment extends Fragment {
 
                                                 int id = item.getItemId();
                                                 //noinspection SimplifiableIfStatement
-                                                if (id == R.id.add_biljesku) {
 
-                                                    Toast.makeText(getActivity(), "Add trip description", Toast.LENGTH_SHORT).show();
-                                                    Intent intent = new Intent(getActivity(), AddNoteActiviy.class);
-                                                    intent.putExtra("FLIGTH_KEY", flight_key);
-                                                    startActivity(intent);
-
-
-                                                    return true;
-                                                } else if (id == R.id.see_biljesku) {
-
-                                                    Toast.makeText(getActivity(), "See trip description", Toast.LENGTH_SHORT).show();
-                                                    return true;
-                                                }else if (id == R.id.delete_flight) {
+                                                if (id == R.id.delete_flight) {
 
                                                     //Create Database ref
 
