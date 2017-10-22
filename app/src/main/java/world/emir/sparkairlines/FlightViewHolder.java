@@ -34,6 +34,7 @@ public class FlightViewHolder extends RecyclerView.ViewHolder{
     View mView;
     Context context;
     public Button booking_btn;
+    public ImageButton pop_menu_btn;
 
 
 
@@ -43,7 +44,7 @@ public class FlightViewHolder extends RecyclerView.ViewHolder{
 
 
         mView = itemView;
-        final ImageButton popup_menu_btn = mView.findViewById(R.id.pop_menu_button);
+        pop_menu_btn = mView.findViewById(R.id.pop_menu_button);
         booking_btn = mView.findViewById(R.id.booking_btn);
 
 
@@ -52,83 +53,11 @@ public class FlightViewHolder extends RecyclerView.ViewHolder{
         //Firebase get Name and Email
 
 
-        FirebaseUser mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        if (mCurrentUser != null) {
-
-            String current_uid = mCurrentUser.getUid();
-
-            DatabaseReference mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(current_uid);
-
-            mUserDatabase.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-
-                    String role = dataSnapshot.child("role").getValue().toString(); //Get role information
-
-                    if (role.equals("member")) {
-
-                        Log.i("Status", role);
-
-                    } else {
-
-                        popup_menu_btn.setVisibility(View.VISIBLE);
-
-                        popup_menu_btn.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(final View view) {
-
-                                PopupMenu popup = new PopupMenu(view.getContext(), popup_menu_btn);
-                                //Inflating the Popup using xml file
-                                popup.getMenuInflater().inflate(R.menu.popupp_menu1, popup.getMenu());
-
-                                //registering popup with OnMenuItemClickListener
-                                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                                    public boolean onMenuItemClick(MenuItem item) {
-
-                                        int id = item.getItemId();
-                                        //noinspection SimplifiableIfStatement
-                                        if (id == R.id.add_biljesku) {
-
-                                            Toast.makeText(view.getContext(), "Add trip description", Toast.LENGTH_SHORT).show();
-                                            Intent i = new Intent(view.getContext(), AddNoteActiviy.class);
-                                            view.getContext().startActivity(i);
-
-                                            return true;
-                                        } else if (id == R.id.see_biljesku) {
-
-                                            Toast.makeText(view.getContext(), "See trip description", Toast.LENGTH_SHORT).show();
-                                            return true;
-                                        }
-
-
-                                        return true;
-                                    }
-                                });
-
-                                popup.show();//showing popup menu
-                            }
-
-                        });
-
-
-                    }
-
-
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
 
         }
 
 
-
-
-    }
 
     public void  setFirstDestination(String firstDestination){
 

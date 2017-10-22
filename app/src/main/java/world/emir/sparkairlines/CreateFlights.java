@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
@@ -46,7 +47,7 @@ public class CreateFlights extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_flights);
 
-        name_of_first_destination = (EditText) findViewById(R.id.name_of_first_destination) ;
+        name_of_first_destination = (EditText) findViewById(R.id.name_of_first_destination);
         name_of_second_destination = (EditText) findViewById(R.id.name_of_second_destination);
 
         time_of_flight = (EditText) findViewById(R.id.ed_time);
@@ -77,10 +78,9 @@ public class CreateFlights extends AppCompatActivity {
         final String price = flight_price.getText().toString();
 
 
-
         if (!TextUtils.isEmpty(name1) && !TextUtils.isEmpty(name2)
                 && !TextUtils.isEmpty(time) && !TextUtils.isEmpty(date)
-                 && !TextUtils.isEmpty(price)) {
+                && !TextUtils.isEmpty(price)) {
 
 
             String time_published = getDateTime().toString();
@@ -93,14 +93,14 @@ public class CreateFlights extends AppCompatActivity {
             current_flights_db.child("second_destination").setValue(name2);
             current_flights_db.child("time").setValue(time);
             current_flights_db.child("date").setValue(date);
-            current_flights_db.child("price").setValue(price+"$");
+            current_flights_db.child("price").setValue(price + "$");
 
             current_flights_db.child("date_of_fligh_created").setValue(time_published);
             current_flights_db.child("author").setValue("Admin");
 
-            String succesMessage = "New flight for "+name1+" - " + name2 +" whit price of "+price+" $ ,is succesufly created in "+time_published;
+            String succesMessage = "New flight for " + name1 + " - " + name2 + " whit price of " + price + " $ ,is succesufly created in " + time_published;
 
-            Toast.makeText(this,succesMessage,Toast.LENGTH_LONG).show();
+            Toast.makeText(this, succesMessage, Toast.LENGTH_LONG).show();
 
 
             Intent mainIntent = new Intent(CreateFlights.this, MainActivity.class);
@@ -108,14 +108,11 @@ public class CreateFlights extends AppCompatActivity {
             startActivity(mainIntent);
 
 
-        }else {
-            Toast.makeText(CreateFlights.this,"Check inputs",Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(CreateFlights.this, "Check inputs", Toast.LENGTH_SHORT).show();
         }
 
     }
-
-
-
 
 
     private String getDateTime() {
@@ -123,7 +120,11 @@ public class CreateFlights extends AppCompatActivity {
         Date date = new Date();
         return dateFormat.format(date);
     }
+
+
+
 }
+
 
 
 

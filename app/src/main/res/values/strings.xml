@@ -83,4 +83,5 @@
     <string name="next_flights">FUTURE FLIGHTS</string>
     <string name="best_offer">PAST FLIGHTS</string>
     <string name="profile">Profile</string>
+    <string name="date_hint">yyyy-MM-dd</string>
 </resources>

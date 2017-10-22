@@ -26,18 +26,19 @@
             android:layout_alignBaseline="@+id/gap"
             android:layout_alignBottom="@+id/gap"
             android:layout_centerHorizontal="true"
+            android:textStyle="bold"
             android:text="Bosnia"
-            android:textSize="25dp" />
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/gap"
             android:layout_width="wrap_content"
-
+            android:textStyle="bold"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
             android:layout_toRightOf="@id/first_destination_txt"
             android:text=" - "
-            android:textSize="25dp" />
+            android:textSize="20dp" />
 
 
         <TextView
@@ -49,8 +50,9 @@
             android:layout_alignBaseline="@+id/gap"
             android:layout_alignBottom="@+id/gap"
             android:layout_toEndOf="@+id/gap"
+            android:textStyle="bold"
             android:text="Bulgaria"
-            android:textSize="25dp" />
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/prc"
