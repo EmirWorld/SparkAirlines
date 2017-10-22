@@ -30,7 +30,7 @@
         android:id="@+id/user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="First Name and Last Name"
+        android:text="@string/first_name_and_last_name"
         android:textStyle="bold"
         android:textSize="20dp"
         android:gravity="center"
@@ -43,7 +43,7 @@
         android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="email@email.com"
+        android:text="@string/email_tamplate"
 
         android:textSize="15dp"
         android:gravity="center"
@@ -60,7 +60,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:background="@drawable/buttonstyle"
-        android:text="Edit"
+        android:text="@string/edit"
         android:textColor="@color/color2" />
 
 </RelativeLayout>

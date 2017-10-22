@@ -18,7 +18,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="16dp"
         android:layout_marginTop="5dp"
-        android:text="Contact us"
+        android:text="@string/contact_us"
         android:textColor="@color/colorPrimary"
         android:textSize="40sp"
         />
@@ -27,7 +27,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorPrimaryDark"
-        android:hint="Name"
+        android:hint="@string/name"
         android:inputType="textPersonName" />
 
     <EditText
@@ -36,14 +36,14 @@
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/colorPrimaryDark"
-        android:hint="Email"
+        android:hint="@string/email"
         android:inputType="textEmailAddress" />
 
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorPrimaryDark"
-        android:hint="Phone"
+        android:hint="@string/phone"
         android:inputType="phone" />
 
     <EditText
@@ -53,7 +53,7 @@
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/colorPrimaryDark"
         android:gravity="top"
-        android:hint="Your Message"
+        android:hint="@string/your_message"
         android:fitsSystemWindows="true"
         android:breakStrategy="balanced"
         android:inputType="textMultiLine"
@@ -68,7 +68,7 @@
         android:elevation="4dp"
         android:paddingLeft="70dp"
         android:paddingRight="70dp"
-        android:text="Submit"
+        android:text="@string/submit"
         android:textColor="#fff" />
 </LinearLayout>
     </ScrollView>

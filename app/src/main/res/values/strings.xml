@@ -1,4 +1,62 @@
 <resources>
+
+    <!--Strings related to note Activity-->
+    <string name="note_name">Note name</string>
+    <string name="add_note">Add note here!</string>
+    <string name="submit">Submit</string>
+
+
+    <!--Strings related to contact-->
+    <string name="contact_us">Contact us!</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="phone">Phone number</string>
+    <string name="your_message">Your message here</string>
+
+    <!--Strings related to activity_create_flights-->
+    <string name="first_destination">Name of first destination</string>
+    <string name="second_destination">Name of second destination</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="price">Price</string>
+
+
+
+    <!--Strings related to activity_login-->
+    <string name="login_email">Email...</string>
+    <string name="login_password">Password...</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="later_login">Login later</string>
+    <string name="dont_have_account">Dont have account?</string>
+
+    <!--Strings related to activity_main_drawer-->
+    <string name="home">Home</string>
+    <string name="about_us">About us</string>
+    <string name="contact">Contact</string>
+    <string name="log_out">Log out!</string>
+
+
+    <!--Strings related to activity_profile-->
+    <string name="first_name_and_last_name">First Name and Last Name</string>
+    <string name="email_tamplate">email@email.com</string>
+    <string name="edit">Edit</string>
+
+    <!--Strings related to activity_register-->
+    <string name="user_name">Username</string>
+    <string name="have_account">Already have account?</string>
+
+    <!--Strings related to activity_see_notes-->
+    <string name="update">UPDATE</string>
+    <string name="remove">REMOVE</string>
+
+    <!--Strings related to activity_setup_profile-->
+    <string name="upload">Upload</string>
+    <string name="close">Close</string>
+
+
+
+
     <string name="app_name">Spark Airlines</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>

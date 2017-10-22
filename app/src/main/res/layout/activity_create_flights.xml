@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Name of second destionation"
+        android:hint="@string/second_destination"
         android:inputType="textPersonName"
         android:layout_above="@+id/ed_price"
         android:layout_alignParentStart="true"
@@ -40,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Name of first destionation"
+        android:hint="@string/second_destination"
         android:inputType="textPersonName"
         android:layout_above="@+id/name_of_second_destination"
         android:layout_alignParentStart="true"
@@ -55,7 +55,7 @@
         android:layout_marginBottom="27dp"
 
         android:ems="10"
-        android:hint="Date"
+        android:hint="@string/date"
         android:inputType="date" />
 
     <EditText
@@ -63,7 +63,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Time"
+        android:hint="@string/time"
         android:inputType="time"
         android:layout_above="@+id/ed_date"
         android:layout_alignParentStart="true"
@@ -76,7 +76,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
 
-        android:hint="Price"
+        android:hint="@string/price"
         android:inputType="number"
         android:layout_above="@+id/ed_time"
         android:layout_alignParentStart="true"
@@ -87,7 +87,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/buttonstyle"
-        android:text="SUBMIT"
+        android:text="@string/submit"
         android:textColor="@color/color2"
         android:layout_marginBottom="35dp"
         android:layout_alignParentBottom="true"

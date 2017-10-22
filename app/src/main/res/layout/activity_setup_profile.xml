@@ -27,7 +27,7 @@
         android:background="@color/trans"
         android:src="@drawable/com_facebook_profile_picture_blank_portrait"
 
-        android:text="Upload"
+        android:text="@string/upload"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -37,11 +37,12 @@
 
     <EditText
         android:id="@+id/setup_name"
-        android:layout_width="wrap_content"
+        android:layout_width="344dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Name and Last"
+        android:hint="@string/first_name_and_last_name"
         android:inputType="textPersonName"
+        android:gravity="center"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         tools:layout_constraintTop_creator="1"
@@ -62,7 +63,7 @@
 
         android:layout_alignEnd="@+id/setup_name"
         android:background="@drawable/buttonstyle"
-        android:text="Update"
+        android:text="@string/update"
         android:textColor="@color/white"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"

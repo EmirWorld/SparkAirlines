@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Note name"
+        android:hint="@string/note_name"
         android:inputType="textPersonName"
         app:layout_constraintLeft_toLeftOf="parent"
         tools:layout_editor_absoluteY="29dp"
@@ -37,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Add not here!"
+        android:hint="@string/add_note"
         android:inputType="textMultiLine"
         android:layout_below="@+id/ed_note_name"
         android:layout_toEndOf="@+id/progresBar_add" />
@@ -49,7 +49,7 @@
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/progresBar_add"
         android:background="@drawable/buttonstyle"
-        android:text="Submit"
+        android:text="@string/submit"
         android:textColor="@color/color2" />
 
     <ProgressBar
