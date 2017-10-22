@@ -111,11 +111,13 @@ public class TopOfferFragment extends Fragment {
                             if (role.equals("member")) {
 
                                 viewHolder.pop_menu_btn.setVisibility(View.GONE);
+                                viewHolder.booking_btn.setVisibility(View.GONE);
 
 
                             } else {
 
                                 viewHolder.pop_menu_btn.setVisibility(View.GONE);
+                                viewHolder.booking_btn.setVisibility(View.GONE);
 
                                 viewHolder.mView.setOnClickListener(new View.OnClickListener() {
                                     @Override
