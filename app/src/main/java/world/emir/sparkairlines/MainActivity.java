@@ -49,7 +49,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DatabaseReference mDatabaseUsers;
     private FloatingActionButton floatingActionButton;
     private FloatingActionButton floatingActionButtonEdit;
-
+    private ImageView mDrawImage;
+    private TextView user_name;
+    private TextView user_email;
 
 
 
@@ -65,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
          floatingActionButton = (FloatingActionButton) findViewById(R.id.admin_fab);
          floatingActionButtonEdit = (FloatingActionButton) findViewById(R.id.edit_fab);
+        mDrawImage =(ImageView) findViewById(R.id.draw_image) ;
 
 
 
@@ -142,31 +145,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         FirebaseUser mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
 
-
         if (mCurrentUser != null ) {
 
             String current_uid = mCurrentUser.getUid();
 
             DatabaseReference mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(current_uid);
 
-
             mUserDatabase.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
 
-
-
                     String role = dataSnapshot.child("role").getValue().toString();
                     //Get role information
 
-
                     if (role.equals("member")) {
-
 
                         Toast.makeText(MainActivity.this, role, Toast.LENGTH_SHORT).show();
 
                     } else {
-
                         floatingActionButton.setVisibility(View.VISIBLE);
                     }
 
@@ -179,7 +175,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             });
         }
-
 
 
         //********
@@ -314,7 +309,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
