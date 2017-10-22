@@ -3,6 +3,7 @@ package world.emir.sparkairlines;
 import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.provider.ContactsContract;
 import android.support.v4.app.FragmentManager;
@@ -73,31 +74,36 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
+
                 String name = dataSnapshot.child("name").getValue().toString(); //Get name from firebase child name
                 String email = dataSnapshot.child("email").getValue().toString(); //Get email from firebase child email
+
                 String profile_pictures = dataSnapshot.child("image").getValue().toString();//Retriving picture link
 
                 user_name.setText(name);
                 user_email.setText(email);
+                profile_picture.setImageURI(Uri.parse(profile_pictures));
 
-                Log.i("Picture",profile_pictures);
-                Glide.with(ProfileActivity.this)
-                        .load(profile_pictures)
-                        .listener(new RequestListener<String, GlideDrawable>() {
-                            @Override
-                            public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
-                                return false;
-                            }
 
-                            @Override
-                            public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
 
-                                return false;
-                            }
-                        })
-                        .placeholder(R.drawable.sea_default)
-                        .fitCenter()
-                        .into(profile_picture);
+//                Log.i("Picture",profile_pictures);
+//                Glide.with(ProfileActivity.this)
+//                        .load(profile_pictures)
+//                        .listener(new RequestListener<String, GlideDrawable>() {
+//                            @Override
+//                            public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+//                                return false;
+//                            }
+//
+//                            @Override
+//                            public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+//
+//                                return false;
+//                            }
+//                        })
+//                        .placeholder(R.drawable.sea_default)
+//                        .fitCenter()
+//                        .into(profile_picture);
 
                 //Glide.with(ProfileActivity.this).load(profile_pictures).into(profile_picture);
 
