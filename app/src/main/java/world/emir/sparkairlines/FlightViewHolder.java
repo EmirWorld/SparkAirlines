@@ -2,6 +2,7 @@ package world.emir.sparkairlines;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
@@ -35,6 +36,8 @@ public class FlightViewHolder extends RecyclerView.ViewHolder{
     Context context;
     public Button booking_btn;
     public ImageButton pop_menu_btn;
+    DatabaseReference mDatabaseBooking;
+    FirebaseAuth mAuth;
 
 
 
@@ -47,6 +50,10 @@ public class FlightViewHolder extends RecyclerView.ViewHolder{
         pop_menu_btn = mView.findViewById(R.id.pop_menu_button);
         booking_btn = mView.findViewById(R.id.booking_btn);
 
+        mDatabaseBooking = FirebaseDatabase.getInstance().getReference().child("Bookings");
+        mDatabaseBooking.keepSynced(true);
+        mAuth = FirebaseAuth.getInstance();
+
 
 
 
@@ -58,6 +65,38 @@ public class FlightViewHolder extends RecyclerView.ViewHolder{
         }
 
 
+    public void setBooked(final String flight_key){
+
+        mDatabaseBooking.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                if(mAuth != null) {
+
+                    if (dataSnapshot.child(flight_key).hasChild(mAuth.getCurrentUser().getUid())) {
+
+                        booking_btn.setText("BOOKED/UNBOOK");
+                        booking_btn.setTextColor(Color.GREEN);
+
+                    } else {
+
+
+                        booking_btn.setText("BOOK NOW");
+                        booking_btn.setTextColor(Color.parseColor("#ef6c00"));
+
+                    }
+                }else{
+                    Toast.makeText(mView.getContext(),"Something went wrong",Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
 
     public void  setFirstDestination(String firstDestination){
 

@@ -54,6 +54,11 @@ public class NextFligthsFragment extends Fragment {
     //DatabaseReference mDatabase;
     ProgressDialog progressDialog;
     Boolean mProcessBooking = false;
+    private FirebaseAuth mAuth;
+
+
+
+    private DatabaseReference mUserDatabase;
 
 
 
@@ -67,6 +72,9 @@ public class NextFligthsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View rootView = inflater.inflate(R.layout.fragment_next_fligths, container, false);
+
+
+
 
 
         //Intilaze recycler view
@@ -118,6 +126,7 @@ public class NextFligthsFragment extends Fragment {
                 viewHolder.setFirstDestination(model.getFirst_destination());
                 viewHolder.setSecondDestination(model.getSecond_destination());
                 viewHolder.setAuthor(model.getAuthor());
+                viewHolder.setBooked(flight_key);
 
 
 
@@ -136,34 +145,64 @@ public class NextFligthsFragment extends Fragment {
                       final DatabaseReference mDatabaseBookings = FirebaseDatabase.getInstance().getReference().child("Bookings");
                       mDatabaseBookings.keepSynced(true);
                       AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                      builder.setTitle("Book this flights?");
+                      builder.setTitle("Book/Unbook this flights?");
                       builder.setMessage("Are you sure?")
                               .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                   @Override
                                   public void onClick(DialogInterface dialogInterface, int i) {
-                                      final ProgressDialog progressDialog = ProgressDialog.show(getActivity(), "Booking...", "Please wait...", true);
+                                      final ProgressDialog progressDialog = ProgressDialog.show(getActivity(), "Booking/Unbooking...", "Please wait...", true);
 
-
-
-
+                                      //Booking database refrence
+                                      final DatabaseReference mDatabaseBookings = FirebaseDatabase.getInstance().getReference().child("Bookings");
+                                      mDatabaseBookings.keepSynced(true);
 
                                       mProcessBooking = true;
 
-                                      mDatabaseBookings.child(flight_key).child(mCurrentUser.getUid()).setValue("BOOKED");
-
-                                      viewHolder.booking_btn.setText("BOOKED");
-                                      viewHolder.booking_btn.setTextColor(Color.GREEN);
-
-                                          viewHolder.booking_btn.setText("BOOK NOW");
 
 
-                                      mProcessBooking = false;
-
-                                      progressDialog.dismiss();
-                                      mDatabaseBookings.keepSynced(true);
+                                      mDatabaseBookings.addValueEventListener(new ValueEventListener() {
+                                          @Override
+                                          public void onDataChange(DataSnapshot dataSnapshot) {
 
 
 
+
+                                              if (mProcessBooking) {
+
+
+                                                  if (dataSnapshot.child(flight_key).hasChild(mCurrentUser.getUid())) {
+
+                                                      progressDialog.setTitle("Unbooking flight:");
+                                                      progressDialog.setMessage("Unboking...");
+
+
+
+                                                      mDatabaseBookings.child(flight_key).child(mCurrentUser.getUid()).removeValue();
+
+                                                      progressDialog.dismiss();
+
+                                                      mProcessBooking = false;
+
+
+                                                  } else {
+
+                                                      mDatabaseBookings.child(flight_key).child(mCurrentUser.getUid()).setValue("BOOKED");
+                                                      progressDialog.dismiss();
+
+
+                                                      mProcessBooking = false;
+
+                                                  }
+
+
+                                              }
+                                          }
+
+                                          @Override
+                                          public void onCancelled(DatabaseError databaseError) {
+
+                                          }
+                                      });
 
                                   }
                               });
