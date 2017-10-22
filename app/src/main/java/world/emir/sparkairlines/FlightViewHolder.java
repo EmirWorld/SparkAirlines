@@ -33,6 +33,8 @@ public class FlightViewHolder extends RecyclerView.ViewHolder{
 
     View mView;
     Context context;
+    public Button booking_btn;
+
 
 
     public FlightViewHolder(View itemView) {
@@ -42,6 +44,10 @@ public class FlightViewHolder extends RecyclerView.ViewHolder{
 
         mView = itemView;
         final ImageButton popup_menu_btn = mView.findViewById(R.id.pop_menu_button);
+        booking_btn = mView.findViewById(R.id.booking_btn);
+
+
+
 
         //Firebase get Name and Email
 

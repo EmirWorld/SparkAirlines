@@ -4,6 +4,7 @@ package world.emir.sparkairlines;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -50,6 +51,7 @@ public class NextFligthsFragment extends Fragment {
     RecyclerView recyclerView;
     //DatabaseReference mDatabase;
     ProgressDialog progressDialog;
+    Boolean mProcessBooking = false;
 
 
 
@@ -103,7 +105,7 @@ public class NextFligthsFragment extends Fragment {
             @Override
             protected void populateViewHolder(final FlightViewHolder viewHolder, Flights model, int position) {
 
-                final String flight_key = getRef(position).getKey();
+              final String flight_key = getRef(position).getKey();
 
 
 
@@ -117,7 +119,64 @@ public class NextFligthsFragment extends Fragment {
 
 
 
-                FirebaseUser mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+                final FirebaseUser mCurrentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+
+
+
+
+
+              viewHolder.booking_btn.setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View view) {
+
+                      //Booking database refrence
+                      final DatabaseReference mDatabaseBookings = FirebaseDatabase.getInstance().getReference().child("Bookings");
+                      mDatabaseBookings.keepSynced(true);
+
+                      mProcessBooking = true;
+
+
+
+                          mDatabaseBookings.addValueEventListener(new ValueEventListener() {
+                              @Override
+                              public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                  if (mProcessBooking) {
+
+
+                                      if (dataSnapshot.child(flight_key).hasChild(mCurrentUser.getUid())) {
+
+
+                                          mDatabaseBookings.child(flight_key).child(mCurrentUser.getUid()).removeValue();
+
+                                          viewHolder.booking_btn.setText("BOOK NOW");
+                                          viewHolder.booking_btn.setTextColor(Color.parseColor("#ef6c00"));
+
+                                          mProcessBooking = false;
+
+
+                                      } else {
+
+                                          mDatabaseBookings.child(flight_key).child(mCurrentUser.getUid()).setValue("BOOKED");
+
+                                          viewHolder.booking_btn.setText("BOOKED");
+                                          viewHolder.booking_btn.setTextColor(Color.GREEN);
+
+
+                                          mProcessBooking = false;
+
+                                      }
+
+
+                                  }
+                              }
+
+                              @Override
+                              public void onCancelled(DatabaseError databaseError) {
+
+                              }
+                          });
 
 
 
@@ -125,7 +184,8 @@ public class NextFligthsFragment extends Fragment {
 
 
 
-
+                  }
+              });
 
 
                 if (mCurrentUser != null ) {
@@ -289,6 +349,8 @@ public class NextFligthsFragment extends Fragment {
 
 
     }
+
+
 
 
 

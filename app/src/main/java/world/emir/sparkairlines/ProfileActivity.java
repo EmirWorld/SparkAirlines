@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,7 +47,9 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
 
-        //Intilaze
+
+
+    //Intilaze
         user_email = (TextView) findViewById(R.id.email);
         user_name = (TextView) findViewById(R.id.user_name);
         editBtn = (Button) findViewById(R.id.edit_btn);
@@ -92,6 +95,7 @@ public class ProfileActivity extends AppCompatActivity {
                                 return false;
                             }
                         })
+                        .placeholder(R.drawable.sea_default)
                         .fitCenter()
                         .into(profile_picture);
 
